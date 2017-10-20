@@ -10,28 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core_1 = require("@angular/core");
-const firebase_config_service_1 = require("./core/service/firebase-config.service");
-let AppComponent = class AppComponent {
-    constructor(service) {
-        this.service = service;
+const firebase = require("firebase");
+require('firebase/database');
+const constants_1 = require("../constant/constants");
+let FirebaseConfigService = class FirebaseConfigService {
+    constructor() {
+        this.configureApp();
+        this.configureDatabase();
+    }
+    get database() {
+        return this._database;
+    }
+    configureApp() {
+        firebase.initializeApp(constants_1.FIREBASE_CONFIG);
+    }
+    configureDatabase() {
+        this._database = firebase.database();
     }
 };
-AppComponent = __decorate([
-    core_1.Component({
-        selector: 'my-app',
-        template: `
-    <navbar></navbar>
-    <div class="container">
-        <router-outlet></router-outlet>
-    </div>
-    `,
-        styles: [`
-    .container {
-        margin-top: 5rem;
-    }
-    `]
-    }),
-    __metadata("design:paramtypes", [firebase_config_service_1.FirebaseConfigService])
-], AppComponent);
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+FirebaseConfigService = __decorate([
+    core_1.Injectable(),
+    __metadata("design:paramtypes", [])
+], FirebaseConfigService);
+exports.FirebaseConfigService = FirebaseConfigService;
+//# sourceMappingURL=firebase-config.service.js.map

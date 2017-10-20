@@ -6,15 +6,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// Modules
 const core_1 = require("@angular/core");
 const platform_browser_1 = require("@angular/platform-browser");
+const bug_module_1 = require("./bugs/bug.module");
+const app_routing_module_1 = require("./app-routing.module");
+const core_module_1 = require("./core/core.module");
+// Components
 const app_component_1 = require("./app.component");
+const navbar_component_1 = require("./navbar/navbar.component");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule],
-        declarations: [app_component_1.AppComponent],
+        imports: [
+            platform_browser_1.BrowserModule,
+            bug_module_1.BugModule,
+            app_routing_module_1.AppRoutingModule,
+            core_module_1.CoreModule.forRoot()
+        ],
+        declarations: [
+            app_component_1.AppComponent,
+            navbar_component_1.NavbarComponent
+        ],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

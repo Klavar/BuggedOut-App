@@ -15,7 +15,9 @@ System.config({
         '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
         
         'rxjs': 'npm:rxjs',
-        'angular-in-memory-web-api': 'npm:angular-in-memory-web-api'
+        'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
+        'firebase': 'npm:firebase'
+
     },
 
     packages: {
@@ -29,7 +31,11 @@ System.config({
         'angular-in-memory-web-api': {
             main: './index.js',
             defaultExtension: 'js'
-        }
+        },
+      'firebase': {
+          main: './app.js',
+          defaultExtension: 'js'
+      }
     }
 });
 })(this);
